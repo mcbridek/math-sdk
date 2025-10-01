@@ -1,0 +1,56 @@
+        # Move sequences paytable (sequence -> payout multiplier)
+        # Redesigned to avoid SDK rounding losses (min 0.02x)
+        # Targeting 98% RTP with "best win only" mechanic
+        self.paytable = {
+            # Basic 2-move combos (very common, small visible wins)
+            (2, "FWD-PUN"): 0.05,
+            (2, "PUN-PUN"): 0.05,
+            (2, "BWD-PUN"): 0.06,
+            (2, "FWD-UPP"): 0.14,
+            (2, "PUN-UPP"): 0.09,
+            (2, "BWD-UPP"): 0.11,
+            (2, "BWD-BWD"): 0.02,
+            (2, "DUK-DUK"): 0.05,
+            (2, "BWD-DUK"): 0.05,
+            (2, "DUK-BWD"): 0.05,
+            (2, "BWD-FWD"): 0.02,
+            (2, "FWD-BWD"): 0.02,
+            (2, "FWD-FWD"): 0.05,
+            (2, "DUK-PUN"): 0.05,
+            (2, "DUK-FWD"): 0.05,
+
+            # 3-move combos (uncommon, medium wins)
+            (3, "PUN-PUN-UPP"): 0.26,
+            (3, "FWD-PUN-UPP"): 0.31,
+            (2, "DUK-UPP"): 0.40,
+            (3, "BWD-FWD-UPP"): 0.44,
+            (3, "FWD-FWD-PUN"): 0.20,
+            (3, "BWD-BWD-PUN"): 0.15,
+            (3, "DUK-DUK-PUN"): 0.22,
+            (3, "FWD-PUN-PUN"): 0.22,
+            (3, "BWD-PUN-UPP"): 0.26,
+
+            # 4-move expert combos (rare, larger wins)
+            (3, "DUK-DUK-UPP"): 0.62,
+            (4, "BWD-DUK-FWD-UPP"): 1.32,
+            (4, "PUN-PUN-PUN-UPP"): 1.01,
+            (4, "FWD-FWD-PUN-UPP"): 0.88,
+            (4, "DUK-DUK-DUK-UPP"): 1.98,
+            (4, "FWD-FWD-FWD-PUN"): 0.75,
+
+            # Knockout sequences (very rare, big wins)
+            (2, "UPP-KO"): 22.04,
+            (2, "DUK-KO"): 44.07,
+            (2, "PUN-KO"): 13.23,
+            (3, "PUN-UPP-KO"): 33.05,
+            (3, "DUK-UPP-KO"): 66.12,
+            (4, "DUK-DUK-UPP-KO"): 110.19,
+            (5, "BWD-DUK-FWD-UPP-KO"): 220.37,
+            (4, "FWD-FWD-UPP-KO"): 88.15,
+
+            # Legendary sequences (mythical, huge wins)
+            (4, "HRT-DIZ-UPP-KO"): 440.75,
+            (5, "DUK-DUK-DUK-UPP-KO"): 2203.74,
+            (5, "FWD-FWD-FWD-UPP-KO"): 2203.74,
+            (6, "DUK-DUK-DUK-DUK-UPP-KO"): 2203.74,
+        }
